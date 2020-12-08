@@ -1,3 +1,4 @@
+{{- $fullName := include "compose.fullname" . -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -28,7 +29,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
@@ -44,6 +45,17 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            {{- range .Values.deployment.volumes }}
+            - mountPath: {{ .mountPath }}
+              name: {{ $fullName}}
+              subPath: {{ .name }}
+            {{- end}}
+      volumes:
+      - name: {{ $fullName }}
+        persistentVolumeClaim:
+          claimName: {{ $fullName }}
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
