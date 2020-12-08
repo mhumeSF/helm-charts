@@ -51,10 +51,12 @@ spec:
               name: {{ $fullName}}
               subPath: {{ .name }}
             {{- end}}
+      {{- if .Values.deployment.volumes -}}
       volumes:
       - name: {{ $fullName }}
         persistentVolumeClaim:
           claimName: {{ $fullName }}
+      {{- end}}
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

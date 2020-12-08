@@ -1,4 +1,4 @@
----
+{{- if .Values.deployment.volumes -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
@@ -10,3 +10,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.deployment.pvSize | default "4Gi" }}
+{{- end }}
