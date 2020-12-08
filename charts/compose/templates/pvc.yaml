@@ -4,7 +4,7 @@ apiVersion: v1
 metadata:
   name: {{ include "compose.fullname" . }}
 spec:
-  storageClassName: openebs-zfspv
+  storageClassName: {{ .Values.deployment.volumes.storageClassName }}
   accessModes:
     - ReadWriteOnce
   resources:
