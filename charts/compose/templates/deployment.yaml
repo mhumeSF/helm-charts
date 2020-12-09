@@ -48,10 +48,10 @@ spec:
           volumeMounts:
             {{- range .Values.deployment.volumes }}
             - mountPath: {{ .mountPath }}
-              name: {{ $fullName}}
+              name: {{ $fullName }}
               subPath: {{ .name }}
-            {{- end}}
-      {{- if .Values.deployment.volumes -}}
+            {{- end }}
+      {{- if .Values.deployment.volumes }}
       volumes:
       - name: {{ $fullName }}
         persistentVolumeClaim:
