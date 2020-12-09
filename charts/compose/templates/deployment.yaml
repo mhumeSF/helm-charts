@@ -51,8 +51,8 @@ spec:
               name: {{ $fullName }}
               subPath: {{ .name }}
             {{- end }}
-      {{- if .Values.deployment.volumes }}
       volumes:
+      {{- if .Values.deployment.volumes }}
       - name: {{ $fullName }}
         persistentVolumeClaim:
           claimName: {{ $fullName }}
