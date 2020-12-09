@@ -3,6 +3,16 @@ entries:
   compose:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2020-12-09T08:36:53.787850352Z"
+    description: A Helm chart for Kubernetes
+    digest: 7ba1ee24ea860b9725e1a5092dcaa8f298c186a11ed58e435f9a1db80c10f40c
+    name: compose
+    type: application
+    urls:
+    - https://github.com/mhumeSF/helm-charts/releases/download/compose-0.5.1/compose-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2020-11-22T10:07:08.465325879Z"
     description: A Helm chart for Kubernetes
     digest: 77329f4fa8fdb0e3dcab146e98136a7eea6785ebce2bd40cb2e653d957968732
