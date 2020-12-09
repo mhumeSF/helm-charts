@@ -4,7 +4,9 @@ apiVersion: v1
 metadata:
   name: {{ include "compose.fullname" . }}
 spec:
-  storageClassName: {{ .Values.deployment.storageClassName | default " " }}
+  {{- if .Values.deployment.storageClassName -}}
+  storageClassName: {{ .Values.deployment.storageClassName }}
+  {{- end }}
   accessModes:
     - ReadWriteOnce
   resources:
